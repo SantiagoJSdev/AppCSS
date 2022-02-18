@@ -71,9 +71,11 @@ export const VideoGames = () => {
   }
 
   const handleNextPage = () => {
+   
     setpage(page + 1)
   }
   const handlePrevPage = () => {
+    
     setpage(page - 1)
   }
   if (page === 0) {

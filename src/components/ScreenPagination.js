@@ -31,8 +31,11 @@ export const ScreenPagination = ({gameFilterByGenre, handleSort, handleRating, s
                           handleNextPage={handleNextPage}
                           handlePrevPage={handlePrevPage}
                         />
+                        
+                      <button className='page-btn-1' onClick={handlePrevPage}>Prev page</button>
+                      <button className='page-btn-2' onClick={handleNextPage}>Next page</button>
                       
-                        </div>
+                  </div>
 
                     <div className='videogames-pages-content2'>
                     <ul className='ul-game'>
@@ -72,8 +75,10 @@ export const ScreenPagination = ({gameFilterByGenre, handleSort, handleRating, s
                           selectValue={selectValue}
                           handleSelectChange={handleSelectChange}
                         />
+                         <button className='page-btn-1' onClick={handlePrevPage}>Prev page</button>
+                         <button className='page-btn-2' onClick={handleNextPage}>Next page</button>
                         </div>
-
+                       
                         <div className='videogames-pages-content2'>
                         <ul className='ul-game'>
                         {
@@ -96,7 +101,7 @@ export const ScreenPagination = ({gameFilterByGenre, handleSort, handleRating, s
                     </div>
 
             }
-  
+        
           </div>
     
     

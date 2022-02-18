@@ -295,9 +295,16 @@ gap: 20px;
 .videogames-pages-interno{
     display: flex;
     flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
+    /* justify-content: center; */
+    /* align-items: center; */
 }
+.videogames-pages-content1{
+    display: flex;
+    /* background: red; */
+    align-items: center;
+    gap: 15px;
+}
+
 .videogames-pages-content2{
     width: 100%;
     height: 400px;
