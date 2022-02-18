@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/navstyles.css'
 
-export const Nav = ({handleSort, handleRating, selectValue, handleSelectChange}) => {
+export const Nav = ({handleSort, handleRating, selectValue, handleSelectChange, handlePrevPage, handleNextPage}) => {
   return <>
              <div className="nav-custom">
                 <select className="nav-select-1" value={'0'} onChange={(e) => handleSort(e)}>
@@ -15,6 +15,10 @@ export const Nav = ({handleSort, handleRating, selectValue, handleSelectChange})
                   <option value="major">major</option>
                   <option value="minor">minor</option>
                 </select>
+                {/* <div className='videogames-pages-btn'> */}
+                      <button className='page-btn-1' onClick={handlePrevPage}>Prev page</button>
+                      <button className='page-btn-2' onClick={handleNextPage}>Next page</button>
+                {/* </div> */}
 
                 <select className="nav-select-1 nav-select-3" value={selectValue} onChange={handleSelectChange}>
                   <option value="0">Select genre:</option>

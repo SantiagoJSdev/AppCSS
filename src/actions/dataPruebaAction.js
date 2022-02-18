@@ -2,6 +2,7 @@ import { types } from "../types/types"
 
 
 
+
 export const startDataGamesPrueba = (data) => {
     return {
         type: types.GETDATA,
@@ -56,6 +57,12 @@ export const startDataPlatformPrueba = (data) => {
         payload: data
     }
 }
-export const startDataGamesByIdDataBasePrueba = (id) => {
+export const startDataGamesByIdDataBasePrueba = (data) => {
+
+    return {
+              
+        type: types.ADDBYGAMEIDDB,
+        payload: data
+    }
 
 }

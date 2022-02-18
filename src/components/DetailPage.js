@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { startDataGamesByIdDataBase } from '../actions/dataGames';
+import { startDataGamesByIdDataBasePrueba } from '../actions/dataPruebaAction';
+import { dataPrueba } from '../dataPrueba/dataPrueba';
+import { getGameById } from '../selectors/getGameById';
 import '../styles/detailStyles.css'
 import { CardCss } from './CardCss';
 
@@ -10,10 +13,11 @@ export const DetailPage = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const { id } = useParams()
-
+    const gameId =  getGameById(dataPrueba, id)
     useEffect(() => {
-
-        dispatch(startDataGamesByIdDataBase(id))
+       console.log(gameId)
+       dispatch(startDataGamesByIdDataBasePrueba(gameId))
+        // dispatch(startDataGamesByIdDataBase(id))
     }, [dispatch, id]);
 
     const state = useSelector(state => state.game.dataGameById);
@@ -38,6 +42,7 @@ export const DetailPage = () => {
 
     //     return <Navigate to="/videogame" />;
     // }
+    console.log(state)
     return <>
         <div className='detail-container'>
             <div className='detail-container-left'>
@@ -47,7 +52,7 @@ export const DetailPage = () => {
                         {
                             (state)
                                 ?
-                                <p>{state.description_raw || state.description}</p>
+                                <p>{state[0].description_raw || state[0].description}</p>
                                 :
                                 ''}
                     </div>
@@ -59,15 +64,16 @@ export const DetailPage = () => {
                 <div className='container-right'>
                     <div>
                         <ul>
+                            
                             {
                                 state ?
 
-                                    <li key={state.id}>
-                                        <h2>{state.name}</h2>
+                                    <li key={state[0].id}>
+                                        <h2>{state[0].name}</h2>
                                         <CardCss
-                                            name={state.name}
-                                            released={state.released}
-                                            img={state.background_image}
+                                            name={state[0].name}
+                                            released={state[0].released}
+                                            img={state[0].image}
                                         />
                                         <button onClick={handleDetail} className='detail-btn'>Return</button>
                                     </li>
@@ -85,7 +91,7 @@ export const DetailPage = () => {
                     <div className='container-right-card1'>
                         <h2>Platforms:</h2>
                         <ul>{
-                            state.platforms.map(g => (
+                            state[0].platforms.map(g => (
                                 (g.platform) ? <li key={g.platform.id}>{g.platform.name}</li>
                                     :
                                     <li key={g.id}>{g.name}</li>
@@ -94,17 +100,19 @@ export const DetailPage = () => {
                     </div>
                     <div className='container-right-card2'>
                         <h2>Genres:</h2>
-                        <ul>{
-                            state.genres.map(g => (
+                        <ul>
+                             {
+                            state[0].genres.map(g => (
                                 <li key={g.id}>{g.name}</li>
                             ))
-                        }</ul>
+                        }
+                        </ul>
                     </div>
                     <div className='container-right-card3'>
                         <h2>Rating:</h2>
                         <ul>
                             <li>
-                                <h4>{state.rating}</h4>
+                                <h4>{state[0].rating}</h4>
                             </li>
                         </ul>
 
